@@ -2,8 +2,8 @@
 import os, sys
 
 here = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(here, 'pyramidapp'))
-config = os.path.join(here, 'pyramidapp', 'production.ini')
+sys.path.insert(0, os.path.join(here, 'todopyramid'))
+config = os.path.join(here, 'todopyramid', 'production.ini')
 
 virtenv = os.environ.get('APPDIR', '~/') + '/virtenv/'
 os.environ['PYTHON_EGG_CACHE'] = os.path.join(virtenv, 'lib/python2.7/site-packages')
@@ -13,11 +13,12 @@ try:
 except:
     pass
 
-import logging.config
-logging.config.fileConfig(config)
+
 
 from pyramid.paster import get_app
+from pyramid.paster import setup_logging
 application = get_app(config, 'main')
+setup_logging(config)
 
 if __name__  == '__main__':
     from wsgiref.simple_server import make_server
