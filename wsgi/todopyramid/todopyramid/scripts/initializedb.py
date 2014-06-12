@@ -112,6 +112,7 @@ def main(argv=sys.argv):
     config_uri = argv[1]
     setup_logging(config_uri)
     settings = get_appsettings(config_uri)
+    settings['sqlalchemy.url'] = 'sqlite:///%(OPENSHIFT_DATA_DIR)s/todopyramid.sqlite' % os.environ
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
     Base.metadata.create_all(engine)
