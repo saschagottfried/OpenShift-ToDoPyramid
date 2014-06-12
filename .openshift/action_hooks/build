@@ -1,7 +1,7 @@
 #!/bin/bash
 # Pyramid OpenShift post-deploy pre-start configuration
 
-export PYTHON=python-2.7
+export PYTHON=python
 export PATH=$PATH:~/$PYTHON/virtenv/bin/
 export PYTHON_EGG_CACHE=~/$PYTHON/virtenv/lib/python2.7/site-packages
 
@@ -16,4 +16,4 @@ ln -s $OPENSHIFT_REPO_DIR/wsgi/$APP/$APP/static/* $OPENSHIFT_REPO_DIR/wsgi/stati
 cd $OPENSHIFT_REPO_DIR/wsgi/$APP
 
 # We're not doing 'install' to save space.
-~/$PYTHON/virtenv/bin/pip install -r requirements.txt -e .
+pip install -r requirements.txt -e .
