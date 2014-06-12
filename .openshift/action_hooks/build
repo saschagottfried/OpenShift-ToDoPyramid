@@ -16,4 +16,4 @@ ln -s $OPENSHIFT_REPO_DIR/wsgi/$APP/$APP/static/* $OPENSHIFT_REPO_DIR/wsgi/stati
 cd $OPENSHIFT_REPO_DIR/wsgi/$APP
 
 # We're not doing 'install' to save space.
-pip install -r requirements.txt -e .
+~/$PYTHON/virtenv/bin/pip install -r requirements.txt -e .
