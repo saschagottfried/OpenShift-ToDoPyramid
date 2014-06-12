@@ -26,7 +26,7 @@ cd $OPENSHIFT_REPO_DIR/wsgi/$APP
 # Initialize our database
 if [ ! -e $OPENSHIFT_DATA_DIR/DB_INITIALIZED ]; then
     echo "Initializing database"
-    paster setup-app production.ini
+    initialize_todopyramid_db production.ini
     touch $OPENSHIFT_DATA_DIR/DB_INITIALIZED
 fi
 
