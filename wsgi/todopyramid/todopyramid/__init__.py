@@ -20,7 +20,7 @@ def main(global_config, **settings):
     # Persona DNS
     settings['persona.audiences'] = '%(OPENSHIFT_APP_DNS)s' % os.environ
     # OpenShift Settings
-    settings['sqlalchemy.url'] = '%(OPENSHIFT_DATA_DIR)s/todopyramid.sqlite' % os.environ
+    settings['sqlalchemy.url'] = 'sqlite:///%(OPENSHIFT_DATA_DIR)s/todopyramid.sqlite' % os.environ
 
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
